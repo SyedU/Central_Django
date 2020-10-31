@@ -1,0 +1,20 @@
+[uwsgi]
+
+# Django-related settings
+# the base directory (full path)
+chdir           = /opt/Central_Django
+# Django's wsgi file (this will be the folder name where wsgi.py and settings.py is)
+module          = Central_Django.wsgi
+# the virtualenv (full path)
+home            = /opt/Central_Django/venv
+# process-related settings
+# master
+master          = true
+# maximum number of worker processes
+processes       = 10
+# the socket (use the full path to be safe
+socket          = /opt/Central_Django/uwsgi/uwsgi.sock
+# ... with appropriate permissions - may be needed
+chmod-socket    = 666
+# clear environment on exit
+vacuum          = true

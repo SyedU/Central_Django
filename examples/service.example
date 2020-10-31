@@ -1,0 +1,17 @@
+[Unit]
+Description=Central_Django-uWSGI-instance
+After=network.target postgresql-11.service
+
+[Service]
+User=centos
+Group=nginx
+WorkingDirectory=/opt/Central_Django
+Environment="PATH=/opt/Central_Django/venv/bin"
+ExecStart=/opt/Central_Django/venv/bin/uwsgi --ini /opt/Central_Django/uwsgi/uwsgi.ini
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

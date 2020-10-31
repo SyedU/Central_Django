@@ -1,0 +1,56 @@
+"""
+Local settings for Central_Django project.
+
+Must be at the same directory as the settings.py file.
+
+All variables are required unless stated otherwise using 'optional' comment
+"""
+# PYTHON IMPORTS
+import os
+
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+STATICFILES_DIR = os.path.join(BASE_DIR, "staticfiles")
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+MEDIA_DIR = os.path.join(BASE_DIR, "media")
+LOGS_DIR = os.path.join(BASE_DIR, "logs")
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'rl3&m!fahw#8z*!7#k$kla6l&hu*l9r0*9qcq86$+tv98*_w(o'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+# Add domain name, i.e. example.com
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'Central_Django.local',
+    'Central_Django.internal'
+]
+
+# needed for debug toolbar
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+ENABLE_HTTPS = False
+
+# Database configuration
+DB_HOST = '127.0.0.1'
+DB_NAME = 'central_django_db'
+DB_USER = 'central_django_user'
+DB_PASS = 'password'
+
+# Email backend (OPTIONAL)
+# Console backend is only meant for development purposes
+# Please comment it for production or use the django default:
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Celery
+CELERY_BROKER_URL = 'amqp://127.0.0.1:5672/'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
